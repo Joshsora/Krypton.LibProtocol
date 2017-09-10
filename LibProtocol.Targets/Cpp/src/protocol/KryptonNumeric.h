@@ -33,9 +33,9 @@ public:
         dv.value = m_value;
         
 #ifdef WRITE_BIG_ENDIAN
-		if (!is_big_endian())
+        if (!is_big_endian())
 #else
-		if (is_big_endian())
+        if (is_big_endian())
 #endif
             std::reverse(&dv.data[0], &dv.data[sizeof(ValueT)]);
 
@@ -47,11 +47,11 @@ public:
         is.read(&dv.data[0], sizeof(ValueT));
 
 #ifdef WRITE_BIG_ENDIAN
-		if (!is_big_endian())
+        if (!is_big_endian())
 #else
-		if (is_big_endian())
+        if (is_big_endian())
 #endif
-			std::reverse(&dv.data[0], &dv.data[sizeof(ValueT)]);
+            std::reverse(&dv.data[0], &dv.data[sizeof(ValueT)]);
 
         m_value = dv.value;
     }
