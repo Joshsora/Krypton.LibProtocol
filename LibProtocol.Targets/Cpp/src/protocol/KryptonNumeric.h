@@ -56,9 +56,22 @@ public:
         m_value = dv.value;
     }
 
-	ValueT value() const {
-		return m_value;
-	}
+    template <
+        typename NumericT,
+        typename = typename std::enable_if<std::is_arithmetic<NumericT>::value, NumericT>::type
+    >
+    operator NumericT() {
+        return (NumericT)m_value;
+    }
+
+    template <
+        typename NumericT,
+        typename = typename std::enable_if<std::is_arithmetic<NumericT>::value, NumericT>::type
+    >
+    KryptonNumeric<ValueT>& operator=(NumericT value) {
+        m_value = value;
+        return *this;
+    }
 private:
     ValueT m_value;
 };
