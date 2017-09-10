@@ -18,7 +18,7 @@ template <
     typename ValueT,
     typename = typename std::enable_if<std::is_arithmetic<ValueT>::value, ValueT>::type
 >
-class KryptonNumeric : KryptonType {
+class KryptonNumeric : public KryptonType {
 public:
     union DataValue {
         char data[sizeof(ValueT)];
@@ -75,6 +75,9 @@ public:
 private:
     ValueT m_value;
 };
+
+typedef KryptonNumeric<bool> KryptonBoolean;
+typedef KryptonBoolean kbool_t;
 
 typedef KryptonNumeric<int8_t> KryptonInt8;
 typedef KryptonInt8 kint8_t;
